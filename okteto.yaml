@@ -1,0 +1,12 @@
+name: okt-test
+labels:
+  opa_istio: "enabled"
+autocreate: true
+image: ANY_OKTETO_IMAGE
+command: /bin/bash
+sync:
+- .:/usr/src/app
+- customize:/customize
+forward:
+- 9239:9229
+- 8088:8080
