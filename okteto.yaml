@@ -1,12 +1,12 @@
-name: okt-test
-labels:
-  opa_istio: "enabled"
-autocreate: true
-image: ANY_OKTETO_IMAGE
-command: /bin/bash
+name: web
+image:
+  name: okteto/chat:dev
+  dockerfile: Dockerfile.dev
+environment:
+  - RAILS_ENV=development
+command: bash
 sync:
-- .:/usr/src/app
-- customize:/customize
+  - .:/app
 forward:
-- 9239:9229
-- 8088:8080
+  - 1234:1234
+  - 5234:db:5234
