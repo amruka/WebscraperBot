@@ -55,9 +55,14 @@ async def webdl(_, m):
     name = dir = str(m.chat.id)
     if not os.path.isdir(dir):
         os.makedirs(dir)
+html = str(urlopen(url).read())
+for i in range(len(html) - 3):
+    if html[i] == '<' and html[i+1] == 'a' and html[i+2] == ' ':
+        pos = html[i:].find('</a>')
+        a=html[i: i+pos+4]
+        obj = urlDownloader(imgFlg=True, linkFlg=True, scriptFlg=True)
+        res = obj.savePage(a, dir)
 
-    obj = urlDownloader(imgFlg=True, linkFlg=True, scriptFlg=True)
-    res = obj.savePage(url, dir)
     if not res:
         return await msg.edit('something went wrong!')
 
