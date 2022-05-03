@@ -1,4 +1,5 @@
 import os, sys
+from urllib.request import urlopen
 import re
 import requests
 from urllib.parse import urljoin, urlparse
